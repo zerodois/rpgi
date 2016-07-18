@@ -1,0 +1,44 @@
+<div class="navbar-fixed">
+	<nav class="teal">
+		<div class="nav-wrapper container">
+		  <a href="/#/" class="brand-logo left"><i class="icon-logo logo"></i></a>
+		  <ul class="right hide-on-med-and-down">
+				<li>
+					<a href="/#/dashboard" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Home">
+						<i class="material-icons">home</i>
+					</a>
+				</li>
+				<li><a ng-click="Dash.toggleScreen()"><i class="material-icons">@{Dash.icon}</i></a></li>
+				<li>
+					<a ng-click="Dash.logout()" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Logout">
+						<i class="material-icons">exit_to_app</i>
+					</a>
+				</li>
+		  </ul>
+		  <a href="#" data-activates="mobile-demo" class="button-collapse right">
+		  	<i class="material-icons">menu</i>
+		  </a>
+		  <ul class="side-nav" id="mobile-demo">
+				<li>
+					<a href="/#/" class="waves-effect">
+						<i class="icon-logo logo"></i><h4 class="side-block">RPGi</h4>
+					</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="/#/dashboard" class="waves-effect waves-teal">
+						<i class="material-icons">home</i> <span>Página inicial</span>
+					</a>
+				</li>
+				<li>
+					<a ng-click="Dash.logout()" class="waves-effect waves-teal">
+						<i class="material-icons">exit_to_app</i><span>Sair</span></a>
+				</li>
+		  </ul>
+		</div>
+  </nav>
+</div>
+
+<script type="text/javascript">
+	$('.button-collapse').sideNav();
+</script>

@@ -1,0 +1,47 @@
+/*
+* @Author: felipelopesrita
+* @Date:   2016-07-18 15:30:21
+* @Last Modified by:   felipelopesrita
+* @Last Modified time: 2016-07-18 15:30:21
+*/
+.corpo {
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+img.background, img.background-md, img.background-sm {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  /*
+  -webkit-filter: blur(5px) grayscale(1);
+  -moz-filter: blur(5px) grayscale(1);
+  -o-filter: blur(5px) grayscale(1);
+  -ms-filter: blur(5px) grayscale(1);
+  filter: blur(5px) grayscale(1);
+  */
+  transition: all 2s;
+}
+img.background.full, img.background-md.full, img.background-sm.full {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+}
+
+img.background-md, img.background-sm {
+	height: 100%;
+	width: auto;
+}

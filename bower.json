@@ -1,0 +1,27 @@
+{
+  "name": "rpg",
+  "description": "",
+  "main": "",
+  "authors": [
+    "felipelopesrita <felipelopesrita@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.7",
+    "angular-resource": "^1.5.7",
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6",
+    "angular-flash-alert": "^2.3.0",
+    "Materialize": "materialize#^0.97.6",
+    "font-awesome": "^4.6.3"
+  }
+}

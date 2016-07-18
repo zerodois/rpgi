@@ -1,0 +1,20 @@
+/*
+* @Author: felipe
+* @Date:   2016-07-18 03:00:42
+* @Last Modified by:   felipe
+* @Last Modified time: 2016-07-18 03:00:42
+*/
+.side-nav li {
+	line-height: 1em;
+}
+.side-nav, .side-nav .logo {
+	color: #333;
+}
+.side-nav .material-icons, .side-nav [class*='icon-'], .side-nav span, .side-nav .side-block {
+	float: left;
+	display: block;
+	height: 100%;
+	margin-top: 0;
+	line-height: 64px;
+	margin-right: 5px;
+}

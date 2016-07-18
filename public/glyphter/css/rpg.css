@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'rpg';
+    src: url('/glyphter/fonts/rpg.eot');
+    src: url('/glyphter/fonts/rpg.eot?#iefix') format('embedded-opentype'),
+         url('/glyphter/fonts/rpg.woff') format('woff'),
+         url('/glyphter/fonts/rpg.ttf') format('truetype'),
+         url('/glyphter/fonts/rpg.svg#rpg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='icon-']:before{
+	display: inline-block;
+  font-family: 'rpg';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+.icon-logo:before{content:'\0041';}

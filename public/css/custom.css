@@ -1,0 +1,31 @@
+/*
+  Author: Felipe J. L. Rita
+ */
+@import url("/css/fonts.css");
+@import url("/css/atomo.css");
+@import url("/css/molecula.css");
+@import url("/css/elemento.css");
+
+body {
+  height: 100%;
+  margin: 0;
+}
+form .row {
+  margin-bottom: 0px;
+}
+.top-buffer {
+  margin-top: 20px;
+}
+form {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px 30px 20px 30px;
+  border-radius: 10px;
+}
+.icon {
+  width: 80px;
+  height: 80px;
+}
+h1.title {
+  height: 80px;
+  line-height: 80px;
+}
