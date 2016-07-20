@@ -63,7 +63,7 @@ img.background.full, img.background-md.full, img.background-sm.full {
   font-size: 3.3em;
   margin-left: -150px;
   margin-top: -150px;
-  z-index: 1;
+  z-index: 3;
   opacity: 1;
   cursor: pointer;
   -webkit-transition: all .1s linear;

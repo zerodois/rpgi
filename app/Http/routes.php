@@ -20,7 +20,9 @@ Route::post('/sigup', 'UserController@sigup');
 Route::get('/login',  'UserController@login');
 Route::get('/logout', 'UserController@logout');
 
+Route::get('/api/file/{filename}', 'FileController@retrieveFile');
 Route::get('/file/{filename}', 'FileController@view');
+Route::get('/file/download/{filename}', 'FileController@download');
 Route::delete('/file/{filename}', 'FileController@delete');
 
 Route::post('/api/upload', 'FileController@upload');

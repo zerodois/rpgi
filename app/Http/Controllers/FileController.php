@@ -19,19 +19,17 @@ class FileController extends Controller
 	];
 
   public function lista() {
-
     $json  = [];
     $dir   = 'files/'.Auth::user()->email.'/';
     $files = Storage::files($dir);
-
     foreach ( $files as $key => $file )
     {
     	$json[$key]['extension'] = pathinfo($file, PATHINFO_EXTENSION);
     	$json[$key]['name']      = str_replace( $dir, '', $file );
     	$json[$key]['filename']  = $files[$key];
     	$json[$key]['type']			 = $this->detectType( $json[$key]['extension'] );
+      ( $json[$key]['type'] == 'image' ) ? ( $json[$key]['b64'] = base64_encode( Storage::get($file) ) ) : 0;
     }
-
     return $json;
   }
 
@@ -44,7 +42,6 @@ class FileController extends Controller
       $dir.$name,
       file_get_contents($file->getRealPath())
     );
-
   }
 
   public function view($filename) {
@@ -52,8 +49,19 @@ class FileController extends Controller
   	return response()->file($dir);
   }
 
+  public function download($filename) {
+    $dir  = __DIR__.'/../../../public/files/'.Auth::user()->email.'/'.$filename;
+    return response()->download($dir);
+  }
+
   public function delete($filename) {
     Storage::delete('files/'.Auth::user()->email.'/'.$filename);
+  }
+
+  public function retrieveFile($filename) {
+    $path = 'files/'.Auth::user()->email.'/'.$filename;
+    $file = Storage::get( $path );
+    return base64_encode( $file );
   }
 
 	private function detectType( $extension ) {
