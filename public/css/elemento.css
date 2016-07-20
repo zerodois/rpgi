@@ -4,6 +4,10 @@
 * @Last Modified by:   felipelopesrita
 * @Last Modified time: 2016-07-18 15:30:21
 */
+
+.relative {
+  position: relative;
+}
 .corpo {
 	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
@@ -17,8 +21,6 @@ img.background, img.background-md, img.background-sm {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: auto;
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
@@ -40,8 +42,51 @@ img.background.full, img.background-md.full, img.background-sm.full {
   -ms-filter: blur(0px);
   filter: blur(0px);
 }
-
-img.background-md, img.background-sm {
+.position-vertical {
 	height: 100%;
 	width: auto;
+}
+.position-horizontal {
+	width: 100%;
+	height: auto;
+}
+
+.upload-board {
+  position: fixed;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  text-align: center;
+  //line-height: 270px;
+  top: 50%;
+  left: 50%;
+  font-size: 3.3em;
+  margin-left: -150px;
+  margin-top: -150px;
+  z-index: 1;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-transition: all .1s linear;
+     -moz-transition: all .1s linear;
+      -ms-transition: all .1s linear;
+       -o-transition: all .1s linear;
+          transition: all .1s linear;
+}
+.upload-board i {
+  margin-top: 80px;
+}
+.upload-board span {
+  display: block;
+  font-size: 0.35em;
+}
+.zoom, .upload-board:hover {
+  -webkit-transform: scale(1.2);
+     -moz-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+       -o-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.ng-hide {
+  opacity: 0;
 }

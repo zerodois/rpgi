@@ -1,11 +1,11 @@
 /*
  * @Author: felipe
  * @Date:   2016-07-11 14:16:26
- * @Last Modified by:   felipe
- * @Last Modified time: 2016-07-18 02:40:41
+ * @Last Modified by:   felipelopesrita
+ * @Last Modified time: 2016-07-20 01:28:42
  */
 
-angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular'])
+angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
 	//Constante CSRF exigida pelo Laravel
 	.constant('CSRF_TOKEN',
 		document.getElementById('container').dataset.token

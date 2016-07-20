@@ -39,6 +39,22 @@
   </nav>
 </div>
 
+<!-- Botão para adicionar arquivos, fichas, imagens, etc -->
+<div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large red">
+    <i class="material-icons">add</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating blue" ng-click="Dash.toogleObject(Dash.display)"><i class="material-icons">description</i></a></li>
+  </ul>
+</div>
+<div class="container relative" ng-controller="FileController as File">
+	<div class="row top-buffer">
+		<div ng-include="'/partials/components/file_board.htm'"></div>
+		<div ng-include="'/partials/components/add_file.htm'"></div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	$('.button-collapse').sideNav();
 </script>

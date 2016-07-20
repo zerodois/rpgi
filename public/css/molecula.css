@@ -18,3 +18,29 @@
 	line-height: 64px;
 	margin-right: 5px;
 }
+.card .mini {
+	height: 180px;
+} 
+.card .mini img {
+	height: 100% !important;
+	width: auto !important;
+}
+.miniatura {
+	min-height: 170px;
+	display: block;
+	line-height: 200px;
+	text-align: center;
+	background-color: #FAFAFA;
+}
+
+#files .card .card-action, #files .card .card-content, #files .card .card-action a {
+	padding: 10px;
+}
+#files .card .card-action i {
+	cursor: pointer;
+}
+#files .card .card-action a {
+	color: #444;
+	font-size: 1.1em;
+	margin-right: 5px;
+}

@@ -1,0 +1,98 @@
+<style type="text/css">
+	#zdrop {
+	  min-height: 200px;
+	}
+	.actions {
+		margin-left: 10px;
+	}
+	#previews {
+		display: none;
+	}
+</style>
+<div class="container">
+	
+  <form 
+  	class="zdrop upload-board card-panel red darken-1 white-text 
+  				pt0 hovicon animate-show" 
+  	id="zdrop"
+  	ng-show="Dash.display"
+  	enctype="multipart/form-data">
+  	<i class="fa fa-cloud-upload fa-lg" aria-hidden="true"></i>
+  	<span>Arraste seu arquivo aqui</span>
+    <input type="hidden" name="_token" id="_token" value="@{RPG.token}" >
+  </form>
+  <div class="collection" id="previews">
+    <div class="">
+    	<div class="row">
+    		<div class="col s4" id="zdrop-template">
+					<div class="card">
+				    <div class="card-image waves-effect waves-block waves-light">
+				      <img class="activator" data-dz-thumbnail="" alt="" src="">
+				    </div>
+				    <div class="card-content">
+							<div class="">
+				        <div>
+				          <p data-dz-name></p>
+				        </div>
+				        <div class="progress">
+				          <div class="determinate" style="width:0" data-dz-uploadprogress></div>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+    		</div>
+    	</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	 
+	  var previewNode = document.querySelector("#zdrop-template");
+		previewNode.id = "";
+		var previewTemplate = previewNode.parentNode.innerHTML;
+		previewNode.parentNode.removeChild(previewNode);
+	  
+	  var zdrop = new Dropzone("#zdrop", {
+      url: '/api/upload',
+      paramName: 'file',
+      maxFilesize:20,
+      clickable: "#zdrop",
+      previewTemplate: previewTemplate,
+      previewsContainer: "#files .row"
+		});
+
+	  /*
+		 var zdrop = new Dropzone("#zdrop", {
+      url: '/api/upload',
+      paramName: 'file',
+      maxFilesize:20,
+      previewTemplate: previewTemplate,
+      autoQueue: false,
+      previewsContainer: "#previews",
+      clickable: "#zdrop"
+		});
+	  */
+
+	  zdrop.on('sending', function(file, xhr, formData){
+    	formData.append('file_name', file.name);
+    });
+
+		zdrop.on('dragenter', function () {
+	    // $('#zdrop').css({ background: '#41ab6b', color: '#fff' });
+	    $('#zdrop').addClass('green lighten-1 zoom');
+		});
+		 
+		zdrop.on('dragleave', function () {
+	    // $('#zdrop').css({ background: '#fff', color: '#000' });
+	    $('#zdrop').removeClass('green lighten-1 zoom');
+		});
+		zdrop.on('drop', function () {
+	    //  $('#zdrop').css({ background: '#fff', color: '#333' });
+	    $('#zdrop').addClass('ng-hide').removeClass('green lighten-1 zoom');
+		});
+	  
+	});
+</script>

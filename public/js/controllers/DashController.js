@@ -1,16 +1,17 @@
 /*
 * @Author: felipe
 * @Date:   2016-07-18 02:38:50
-* @Last Modified by:   felipe
-* @Last Modified time: 2016-07-18 12:02:33
+* @Last Modified by:   felipelopesrita
+* @Last Modified time: 2016-07-20 01:21:09
 */
 
 angular.module('rpg').controller('DashController', DashController);
 function DashController( $location, $resource, Fullscreen, FUNCTIONS ) {
 
-	var vm   = this;
-	var func = FUNCTIONS($location);
-	vm.icon  = 'fullscreen';
+	var vm   	 = this;
+	var func 	 = FUNCTIONS($location);
+	vm.icon    = 'fullscreen';
+	vm.display = false;
 	
 	vm.toggleScreen = function() {
 		if (Fullscreen.isEnabled())
@@ -23,6 +24,11 @@ function DashController( $location, $resource, Fullscreen, FUNCTIONS ) {
     	vm.icon = 'fullscreen_exit';
     	Fullscreen.all();
     }
+	}
+
+	vm.toogleObject = function( ) {
+		if(vm.display) vm.display = false;
+		else vm.display = true;
 	}
 
 	vm.logout = function () {

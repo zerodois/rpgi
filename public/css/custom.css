@@ -10,6 +10,9 @@ body {
   height: 100%;
   margin: 0;
 }
+.index {
+  z-index: 1;
+}
 form .row {
   margin-bottom: 0px;
 }

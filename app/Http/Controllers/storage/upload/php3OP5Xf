@@ -1,0 +1,7 @@
+artisan db:seed       		       : Seed do banco
+artisan serve              	       : Start server Laravel
+artisan make:model Table -m  	       : Create Model Laravel
+artisan make:request Table             : Create validator class to Table
+artisan make:auth	     	       : Create HomeController 
+artisan make:controller ControllerName : Create controller without CRUD methods
+artisan make:middleware MiddlewareName : Create a Middleware

@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="card-panel pt0 hovicon" id="files">
+		<span>Meus arquivos pessoais</span>
+		<div class="row">
+			<div class="col s4" ng-repeat="file in File.files">
+			
+				<div class="card">
+			    <div class="card-image mini waves-effect waves-block waves-light">
+			      <img class="activator" ng-show="file.type=='image'" alt="" ng-src="/@{file.filename}">
+			      <span ng-show="file.type=='document'" class="miniatura">
+			      	<i class="fa fa-file fa-3x" aria-hidden="true"></i>
+			      </span>
+			    </div>
+			    <div class="card-content">
+						<p>@{file.name}</p>
+			    </div>
+			    <div class="card-action right-align">
+			    	<a ng-href="/file/@{file.name}"><i class="material-icons">remove_red_eye</i></a>
+			    	<i class="material-icons" id="card-@{$index}" ng-click="File.delete('card-'+$index, file.name)">delete</i>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
