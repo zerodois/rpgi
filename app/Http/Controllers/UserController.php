@@ -14,7 +14,7 @@ class UserController extends Controller
       'email' => Request::input('email'),
       'password' => Request::input('password'),
     );
-    if( Auth::attempt($credentials) )
+    if( Auth::validate($credentials) && Auth::attempt($credentials) )
       return [ 'auth' => true ];
     return [ 'auth' => false ];
   }
