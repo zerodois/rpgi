@@ -26,8 +26,7 @@ class FileController extends Controller
     $path = __DIR__.'/../../../storage/app/files';
     if( !file_exists(__DIR__.'/../../../public/files') )
     {
-      if( !is_dir($path) )
-        Storage::makeDirectory('files');
+      Storage::makeDirectory('files');
       symlink($path, __DIR__.'/../../../public/files');
     }
   }
