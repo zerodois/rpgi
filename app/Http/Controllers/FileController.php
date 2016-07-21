@@ -22,13 +22,16 @@ class FileController extends Controller
 	];
 
   public function __construct() {
+    
     //Cria o simbolic link se ele não existir
-    $path = __DIR__.'/../../../storage/app/files';
-    if( !file_exists(__DIR__.'/../../../public/files') )
-    {
+    $storage = storage_path('app');
+    $storage = $storage.'/files';
+
+    if( !is_dir($storage) )
       Storage::makeDirectory('files');
-      symlink($path, __DIR__.'/../../../public/files');
-    }
+
+    if( !file_exists( storage_path('').'/../public/files' ) )
+      symlink( $storage, storage_path('').'/../public/files' );
   }
 
   public function lista() {
