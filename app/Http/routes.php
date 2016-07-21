@@ -27,3 +27,10 @@ Route::delete('/file/{id}', 'FileController@delete');
 
 Route::post('/api/upload', 'FileController@upload');
 Route::get('/api/file', 'FileController@lista');
+
+Route::get('/mail', 'MailController@confirmacao');
+/*
+Route::get('/mail', function(){
+	dd(Config::get('mail'));
+});
+*/
