@@ -27,11 +27,15 @@ class FileController extends Controller
     $storage = storage_path('app');
     $storage = $storage.'/files';
 
+    $public  = public_path();
+    $public  = $public.'/files';
+
     if( !is_dir($storage) )
       Storage::makeDirectory('files');
 
-    if( !file_exists( storage_path('').'/../public/files' ) )
-      symlink( $storage, storage_path('').'/../public/files' );
+    if( !file_exists($public) )
+      symlink( $storage, $public );
+
   }
 
   public function lista() {
