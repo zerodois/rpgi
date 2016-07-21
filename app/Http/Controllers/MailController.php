@@ -18,7 +18,7 @@ class MailController extends Controller
 		];
 		
 		Mail::send('welcome', $data, function ($message) {
-	    $message->from('felipe@rpgi.herokuapp.com', 'Felipe J. L. Rita');
+	    $message->from('felipelopesrita@gmail.com', 'Felipe J. L. Rita');
 		  $message->to('felipelopesrita@hotmail.com');
 		});
 
