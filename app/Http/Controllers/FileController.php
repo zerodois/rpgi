@@ -5,8 +5,11 @@ namespace rpg\Http\Controllers;
 use Illuminate\Http\Request;
 use rpg\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use rpg\File;
+use rpg\User;
 use Storage;
 use Auth;
+use Image;
 
 class FileController extends Controller
 {
@@ -18,54 +21,93 @@ class FileController extends Controller
 		'image'		 =>	[ 'png', 'jpg', 'gif', 'bmp', 'webp' ]
 	];
 
-  public function lista() {
-    $json  = [];
-    $dir   = 'files/'.Auth::user()->email.'/';
-    $files = Storage::files($dir);
-    foreach ( $files as $key => $file )
-    {
-    	$json[$key]['extension'] = pathinfo($file, PATHINFO_EXTENSION);
-    	$json[$key]['name']      = str_replace( $dir, '', $file );
-    	$json[$key]['filename']  = $files[$key];
-    	$json[$key]['type']			 = $this->detectType( $json[$key]['extension'] );
-      ( $json[$key]['type'] == 'image' ) ? ( $json[$key]['b64'] = base64_encode( Storage::get($file) ) ) : 0;
-    }
-    return $json;
+  public function __construct() {
+    //Cria o simbolic link se ele não existir
+    if( !file_exists(__DIR__.'/../../../public/files') )
+      symlink(__DIR__.'/../../../storage/app/files', __DIR__.'/../../../public/files');
   }
 
+  public function lista() {
+    $files = User::find( Auth::user()->id )->files;
+    return $files->toJson();
+  }
+
+  //Upload de arquivos
   public function upload() {
-  	$file = Input::file('file');
+  	
+    //Informações do upload
+    $file = Input::file('file');
   	$name = Input::get('file_name');
   	$dir  = 'files/'.Auth::user()->email.'/';
+    $ext  = pathinfo( $name, PATHINFO_EXTENSION );
+    $type = $this->detectType($ext);
 
-  	Storage::put(
-      $dir.$name,
+    //Informações do item que serão guardadas no banco
+    $insert = [
+      'name' => $name,
+      'path' => $dir,
+      'extension' => $ext,
+      'type' => $type
+    ];
+    
+    //Salva no banco o caminho do arquivo e adiciona no inventario do usuario
+    $obj  = new File( $insert );
+    $user = User::find( Auth::user()->id );
+    $user->files()->save($obj);
+
+    //Guarda a imagem
+    Storage::put(
+      $dir.$obj->id.'.'.$ext,
       file_get_contents($file->getRealPath())
     );
+
+    //Se for uma imagem, salva um icone com tamanho reduzido
+    if( $type == 'image' )
+      $this->createIcon( $file->getRealPath(), $dir."{$obj->id}.{$ext}", $ext );
   }
 
-  public function view($filename) {
-  	$dir  = __DIR__.'/../../../public/files/'.Auth::user()->email.'/'.$filename;
-  	return response()->file($dir);
+  //Visualizar arquivo
+  public function view($id) {
+    $file = File::find( $id );
+    if( count($file)<=0 ) return false;
+    $dir  = __DIR__.'/../../../public/'.$file->path.$file->id.'.'.$file->extension;
+    if( is_file($dir) )
+      return response()->file($dir);
+    return 'Arquivo não existe';
   }
 
-  public function download($filename) {
-    $dir  = __DIR__.'/../../../public/files/'.Auth::user()->email.'/'.$filename;
-    return response()->download($dir);
+  //Download arquivo
+  public function download($id) {
+    $file = File::find( $id );
+    if( count($file)<=0 )
+      return false;
+    $dir  = __DIR__.'/../../../public/'.$file->path.$file->id.'.'.$file->extension;
+    return response()->download( $dir, $file->name );
   }
 
-  public function delete($filename) {
-    Storage::delete('files/'.Auth::user()->email.'/'.$filename);
+  //Apaga o arquivo do disco
+  public function delete($id) {
+    $file = File::find( $id );
+    if( count($file)<=0 )
+      return false;
+    File::destroy($id);
+    Storage::delete($file->path.'/'.$id.'.'.$file->extension);
+    if( $file->extension=='image' )
+      Storage::delete($file->path.'/'.$id.'_icon.jpg');
   }
 
-  public function retrieveFile($filename) {
-    $path = 'files/'.Auth::user()->email.'/'.$filename;
-    $file = Storage::get( $path );
-    return base64_encode( $file );
+  private function createIcon($path, $dest, $extension) {
+    $img = Image::make($path);
+    $dest = str_replace( ".{$extension}", "_icon.jpg", $dest );
+    $img->encode('jpg')
+        ->resize(null, 300, function ($constraint) {
+            $constraint->aspectRatio();
+          })
+        ->save($dest);
   }
 
+  //Detecta o tipo do arquivo (musica, imagem, etc)
 	private function detectType( $extension ) {
-
 		foreach ( $this->types as $type => $ext )
 			if( in_array($extension, $ext) ) return $type;
 		return '';

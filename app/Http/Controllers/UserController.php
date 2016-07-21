@@ -18,7 +18,7 @@ class UserController extends Controller
       return [ 'auth' => true ];
     return [ 'auth' => false ];
   }
-
+  
   public function login() {
     return [ 'guest' => Auth::guest() ] ;
   }

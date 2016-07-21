@@ -26,6 +26,10 @@ class User extends Eloquent implements AuthenticatableContract, AuthorizableCont
         'username', 'name', 'email', 'password',
     ];
 
+    public function files() {
+        return $this->hasMany('rpg\File');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

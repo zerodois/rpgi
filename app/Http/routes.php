@@ -21,9 +21,9 @@ Route::get('/login',  'UserController@login');
 Route::get('/logout', 'UserController@logout');
 
 Route::get('/api/file/{filename}', 'FileController@retrieveFile');
-Route::get('/file/{filename}', 'FileController@view');
-Route::get('/file/download/{filename}', 'FileController@download');
-Route::delete('/file/{filename}', 'FileController@delete');
+Route::get('/file/{id}', 'FileController@view');
+Route::get('/file/download/{id}', 'FileController@download');
+Route::delete('/file/{id}', 'FileController@delete');
 
 Route::post('/api/upload', 'FileController@upload');
 Route::get('/api/file', 'FileController@lista');

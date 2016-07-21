@@ -2,7 +2,7 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:16:26
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-20 01:28:42
+ * @Last Modified time: 2016-07-20 12:02:37
  */
 
 angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
@@ -17,7 +17,7 @@ angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
 			$location.path(location)
 		}
 		obj.erro = function(error) {
-			console.log(error);
+			console.log(error.data);
 		}
 		return obj;
 	})

@@ -2,12 +2,23 @@
 	<div class="card-panel pt0 hovicon" id="files">
 		<span>Meus arquivos pessoais</span>
 		<div class="row">
+			<ul class="collection hide-on-med-and-up">
+				<li class="collection-item center-align" ng-repeat="file in File.files">
+					<div>
+						@{file.name}
+						<div class="actions">
+							<a ng-href="/file/download/@{file._id}"><i class="material-icons">cloud_download</i></a>
+				    	<a ng-href="/file/@{file._id}"><i class="material-icons">remove_red_eye</i></a>
+				    	<a><i class="material-icons" d="card-@{$index}" ng-click="File.delete('card-'+$index, file._id)">delete</i></a>
+						</div>
+					</div>
+				</li>
+			</ul>
 			<div class="col s4" ng-repeat="file in File.files">
-			
-				<div class="card">
+				<div class="card hide-on-small-only">
 			    <div class="card-image mini waves-effect waves-block waves-light">
 			      <img class="activator" ng-show="file.type=='image'" alt="" 
-			      	ng-src="data:image/jpeg;base64,@{file.b64}">
+			      	ng-src="@{file.path}@{file._id}_icon.jpg">
 			      <span ng-show="file.type=='document'" class="miniatura">
 			      	<i class="fa fa-file fa-3x" aria-hidden="true"></i>
 			      </span>
@@ -16,9 +27,9 @@
 						<p>@{file.name}</p>
 			    </div>
 			    <div class="card-action right-align">
-			    	<a ng-href="/file/download/@{file.name}"><i class="material-icons">cloud_download</i></a>
-			    	<a ng-href="/file/@{file.name}"><i class="material-icons">remove_red_eye</i></a>
-			    	<i class="material-icons" id="card-@{$index}" ng-click="File.delete('card-'+$index, file.name)">delete</i>
+			    	<a ng-href="/file/download/@{file._id}"><i class="material-icons">cloud_download</i></a>
+			    	<a ng-href="/file/@{file._id}"><i class="material-icons">remove_red_eye</i></a>
+			    	<i class="material-icons" id="card-@{$index}" ng-click="File.delete('card-'+$index, file._id)">delete</i>
 			    </div>
 			  </div>
 			</div>

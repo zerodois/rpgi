@@ -79,12 +79,14 @@
 	  zdrop.on('sending', function(file, xhr, formData){
     	formData.append('file_name', file.name);
     });
+    zdrop.on('complete', function(file){
+    	console.log(file);
+    });
 
 		zdrop.on('dragenter', function () {
 	    // $('#zdrop').css({ background: '#41ab6b', color: '#fff' });
 	    $('#zdrop').addClass('green lighten-1 zoom');
 		});
-		 
 		zdrop.on('dragleave', function () {
 	    // $('#zdrop').css({ background: '#fff', color: '#000' });
 	    $('#zdrop').removeClass('green lighten-1 zoom');
