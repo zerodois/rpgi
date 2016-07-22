@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
   <!-- Link to the email's CSS, which will be inlined into the email -->
-  <link rel="stylesheet" href="{{ url() }}/css/foundation-emails.css">
+  <link rel="stylesheet" href="{{ url('/') }}/css/foundation-emails.css">
   <style type="text/css">
   body,
   html, 
