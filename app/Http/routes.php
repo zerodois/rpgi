@@ -28,6 +28,9 @@ Route::delete('/file/{id}', 'FileController@delete');
 Route::post('/api/upload', 'FileController@upload');
 Route::get('/api/file', 'FileController@lista');
 
+Route::get('/api/mail', function(){
+	return view('mails.auth.sigup');
+});
 Route::post('/api/mail', 'MailController@mail');
 /*
 Route::get('/mail', function(){

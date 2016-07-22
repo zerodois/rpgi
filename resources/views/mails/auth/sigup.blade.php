@@ -6,7 +6,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
   <!-- Link to the email's CSS, which will be inlined into the email -->
-  <link rel="stylesheet" href="{{ url('/') }}/css/foundation-emails.css">
   <style type="text/css">
   body,
   html, 
@@ -61,9 +60,9 @@
                   <table class="button large radius">
                     <tr>
                       <td>
-                        <table>
+                        <table style="background-color: #1BBC9B; border-radius: 4px;">
                           <tr>
-                            <td><a href="#">Confirmar cadastro</a></td>
+                            <td><a href="#" style="color: white; text-decoration: none; display: block; padding: 20px 30px;">Confirmar cadastro</a></td>
                           </tr>
                         </table>
                       </td>
