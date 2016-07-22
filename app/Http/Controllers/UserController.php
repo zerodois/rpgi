@@ -35,6 +35,21 @@ class UserController extends Controller
     return [ 'logout' => Auth::logout() ];
   }
 
+  public function confirma($id) {
+
+    $user = User::find($id);
+    if( count($user) == 0 )
+      return [ 'err' => true, 'message' => 'Há um erro na url informada :(' ];
+
+    if( $user->verified )
+      return [ 'err' => true, 'message' => 'Essa conta já foi confirmada. Prossiga realizando o login' ];
+
+    $user->verified = true;
+    $user->save();
+
+    return [ 'confirmed' => true ];
+  }
+
   public function sigup() {
      $data = Request::all();
      return User::create([

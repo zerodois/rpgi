@@ -24,6 +24,20 @@
                   </div>
                 </div>
               </div>
+              <div class="row" ng-show="User.checked">
+                <div class="input-field col s12">
+                  <div class="card-panel green" ng-show="User.checked.confirmed">
+                    <div class="card-content white-text">
+                      Sua conta foi confirmada. Faça login para continuar
+                    </div>
+                  </div>
+                  <div class="card-panel red" ng-show="User.checked.err">
+                    <div class="card-content white-text">
+                      @{User.checked.message}
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="input-field col s12">
                   <input type="email" name="email" id="email" ng-model="User.formData.email" class="validate" required>

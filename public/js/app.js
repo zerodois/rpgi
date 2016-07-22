@@ -2,7 +2,7 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:16:26
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-22 03:20:13
+ * @Last Modified time: 2016-07-22 12:25:10
  */
 
 angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
@@ -40,6 +40,11 @@ angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
 		});
 
 		$routeProvider.when('/sigin', {
+			templateUrl: 'partials/sigin.html',
+			controller: 'UserController as User'
+		});
+
+		$routeProvider.when('/sigin/:id', {
 			templateUrl: 'partials/sigin.html',
 			controller: 'UserController as User'
 		});

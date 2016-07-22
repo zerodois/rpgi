@@ -2,7 +2,7 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:46:55
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-22 11:40:41
+ * @Last Modified time: 2016-07-22 15:58:00
  */
 
 angular.module('rpg').controller('UserController', UserController);
@@ -15,6 +15,21 @@ function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN
   vm.token = CSRF_TOKEN;
 
   vm.email  = $routeParams.mail; 
+
+  vm.confirm = function( id ) {
+    var uri = '/confirm/:idObj';
+    var req = $resource(uri);
+    var promise = req.get({ idObj: id }).$promise;
+
+    promise
+      .then(function(json){
+        console.log(json);
+        vm.checked = json;
+      });
+  };
+
+  if( $routeParams.id )
+    vm.confirm( $routeParams.id );
 
   var login = $resource('/login');
   var res   = login.get().$promise;
