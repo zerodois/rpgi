@@ -6,10 +6,24 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
   <!-- Link to the email's CSS, which will be inlined into the email -->
-  <link rel="stylesheet" href="assets/css/foundation-emails.css">
-  <style>
-    <!-- Your CSS to inline should be added here -->
-  </style>
+  <link rel="stylesheet" href="/css/foundation-emails.css">
+  <style type="text/css">
+  body,
+  html, 
+  .body,
+  h1, h4, p {
+    background: white !important;
+    text-align: center !important;
+  }
+
+  .container.header {
+    background: #f3f3f3;
+  }
+
+  .body-border {
+    border-top: 8px solid #663399;
+  }
+</style>
 </head>
 
 <body>
@@ -20,93 +34,48 @@
       <td class="float-center" align="center" valign="top">
         <center>
           <!-- The content of your email goes here. -->
-          <style type="text/css">
-            .header {
-              background: #8a8a8a;
-            }
-
-            .header .columns {
-              padding-bottom: 0;
-            }
-
-            .header p {
-              color: #fff;
-              padding-top: 15px;
-            }
-
-            .header .wrapper-inner {
-              padding: 20px;
-            }
-
-            .header .container {
-              background: transparent;
-            }
-
-            table.button.facebook table td {
-              background: #3B5998 !important;
-              border-color: #3B5998;
-            }
-
-            table.button.twitter table td {
-              background: #1daced !important;
-              border-color: #1daced;
-            }
-
-            table.button.google table td {
-              background: #DB4A39 !important;
-              border-color: #DB4A39;
-            }
-
-            .wrapper.secondary {
-              background: #f3f3f3;
-            }
-          </style>
-          <wrapper class="header">
-            <container>
-              <row class="collapse">
-                <columns small="6">
-                  <img src="http://placehold.it/200x50/663399">
-                </columns>
-                <columns small="6">
-                  <p class="text-right">BASIC</p>
-                </columns>
-              </row>
-            </container>
-          </wrapper>
-
-          <container>
-
-            <spacer size="16"></spacer>
-            
+          <container class="header">
             <row>
-              <columns small="12">
-                
-                <h1>Hi, Susan Calvin</h1>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iste, amet consequatur a veniam.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut optio nulla et, fugiat. Maiores accusantium nostrum asperiores provident, quam modi ex inventore dolores id aspernatur architecto odio minima perferendis, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quos quasi itaque beatae natus fugit provident delectus, magnam laudantium odio corrupti sit quam. Optio aut ut repudiandae velit distinctio asperiores?</p>
-                <callout class="primary">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repellendus natus, sint ea optio dignissimos asperiores inventore a molestiae dolorum placeat repellat excepturi mollitia ducimus unde doloremque ad, alias eos!</p>
-                </callout>
+              <columns>
+                <h1 class="text-center">Bem vindo ao sistema RPGi</h1>
               </columns>
             </row>
-            <wrapper class="secondary">
+          </container>
 
-              <spacer size="16"></spacer>
+          <container class="body-border">
+            <row>
+              <columns>
 
-              <row>
-                <columns large="6">
-                  <h5>Connect With Us:</h5>
-                  <button class="facebook expand" href="http://zurb.com">Facebook</button>
-                  <button class="twitter expand" href="http://zurb.com">Twitter</button>
-                  <button class="google expand" href="http://zurb.com">Google+</button>
-                </columns>
-                <columns large="6">
-                  <h5>Contact Info:</h5>
-                  <p>Phone: 408-341-0600</p>
-                  <p>Email: <a href="mailto:foundation@zurb.com">foundation@zurb.com</a></p>
-                </columns>
-              </row>
-            </wrapper>
+                <spacer size="32"></spacer>
+
+                <center>
+                  <img src="{{ url('/') }}/images/logo.svg" width="200" height="200" style="margin-bottom: 20px;">
+                </center>
+
+                <spacer size="16"></spacer>
+
+                <h4>Um mundo de aventuras e emoções a um clique de distância</h4>
+                <p>A equipe RPGi lhe deseja sorte no jogo, muitos críticos positivos e o mínimo possível de críticos negativos nessa sua nova jornada :)</p>
+                <p>Para que você possa ingressar de vez em nosso sistema, no entanto, é necessário que confirme sua conta. É simples e rápido, eu prometo. Na verdade, não vou mais enrolar, então vou abrir o jogo: é só clicar nesse botão aí em baixo. Mais simples que tirar um 20 no dado ;)</p>
+                <center>
+                  <table class="button large radius">
+                    <tr>
+                      <td>
+                        <table>
+                          <tr>
+                            <td><a href="#">Confirmar cadastro</a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </center>
+              </columns>
+            </row>
+            <row style="color: #666; font-size: 0.9em;">
+              Este é um email gerado automaticamente, não tente respondê-lo :v
+            </row>
+            <spacer size="16"></spacer>
           </container>
 
         </center>

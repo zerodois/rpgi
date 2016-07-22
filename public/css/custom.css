@@ -12,6 +12,7 @@ body {
 }
 .index {
   z-index: 1;
+  position: relative;
 }
 form .row {
   margin-bottom: 0px;

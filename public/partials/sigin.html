@@ -4,7 +4,7 @@
 <div class="corpo">
   <section class="container center-block">
     <div class="row">
-      <div class="col s12 m8 l6 offset-m2 offset-l3 center-align waves-effect">
+      <div class="col s12 m8 l6 offset-m2 offset-l3 center-align index">
         <form name="formLogin" ng-submit="User.sigin()" novalidate>
           <input type="hidden" ng-model="User.formData._token" name="_token" value="@{User.token}">
           <div class="row">
@@ -15,8 +15,11 @@
               <div class="row" ng-show="User.erro">
                 <div class="input-field col s12">
                   <div class="card-panel red">
-                    <div class="card-content white-text">
+                    <div ng-hide="User.message" class="card-content white-text">
                       O email e/ou a senha informados estão incorretos
+                    </div>
+                    <div ng-show="User.message" class="card-content white-text">
+                      @{User.message}
                     </div>
                   </div>
                 </div>

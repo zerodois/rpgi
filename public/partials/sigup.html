@@ -4,8 +4,21 @@
 <div class="corpo">
   <div class="container">
     <div class="row">
-      <div class="col col s12 m8 l6 offset-m2 offset-l3 waves-effect center-align">
+      <div class="col col s12 m8 l6 offset-m2 offset-l3 index center-align">
         <form name="formLogin" ng-submit="User.sigup()" novalidate>
+          <div class="wait" ng-show="User.wait">
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <h1 class="title text-center"><i style="font-size: 80px;" class="icon-logo"></i> RPGi</h1>
           </div>

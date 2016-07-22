@@ -16,7 +16,6 @@
   display: flex;
   align-items: center;
 }
-
 img.background, img.background-md, img.background-sm {
   position: fixed;
   bottom: 0;
@@ -86,7 +85,22 @@ img.background.full, img.background-md.full, img.background-sm.full {
        -o-transform: scale(1.2);
           transform: scale(1.2);
 }
-
 .ng-hide {
   opacity: 0;
+}
+.wait {
+  position: absolute;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 95%;
+  border-radius: 5px;
+  margin-top: -15px;
+  margin-left: -30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+}
+.wait .preloader-wrapper {
+  margin: auto;
 }

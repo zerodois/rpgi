@@ -2,7 +2,7 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:16:26
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-20 12:02:37
+ * @Last Modified time: 2016-07-22 03:20:13
  */
 
 angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
@@ -31,6 +31,11 @@ angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
 
 		$routeProvider.when('/sigup', {
 			templateUrl: 'partials/sigup.html',
+			controller: 'UserController as User'
+		});
+
+		$routeProvider.when('/confirmation/:mail', {
+			templateUrl: 'partials/confirmation.html',
 			controller: 'UserController as User'
 		});
 

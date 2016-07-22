@@ -1,0 +1,40 @@
+<img src="/images/wallpaper.jpg" alt="Imagem de fundo" class="position-@{User.position} background hide-on-med-and-down" />
+<img src="/images/wallpaper.jpg" alt="Imagem de fundo" class="position-@{User.position} background-md hide-on-small-only hide-on-large-only" />
+<img src="/images/wallpaper.jpg" alt="Imagem de fundo" class="position-@{User.position} background-sm hide-on-med-and-up" />
+<div class="corpo">
+  <div class="container">
+    <div class="row">
+      <div class="col col s12 m8 l6 offset-m2 offset-l3 index center-align">
+				<form>
+					<div class="wait" ng-show="User.wait">
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+					<div class="row">
+            <h1 class="title text-center"><i style="font-size: 80px;" class="icon-logo"></i> RPGi</h1>
+          </div>
+					<p class="flow-text">
+						Obrigado pelo seu cadastro :) <br>
+						Para que você acesse sua conta, é necessário que a confirme entrando no email cadastro e acessando o link indicado.
+					</p>
+					<p class="flow-text">
+						Caso o email não esteja em sua caixa de entrada, verifique a caixa de spans e lixeira. Caso ainda sim nao encontre o email, você pode pedir que reenviemos esse email :p
+					</p>
+					<p class="center-align">
+						<a href="/#/sigin">Voltar ao login</a> | 					
+						<a href="javascript:void(0)" ng-click="User.mail(User.email)">Reenviar email</a>						
+					</p>
+				</form>
+      </div>
+    </div>
+  </div>
+</div>

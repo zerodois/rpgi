@@ -2,27 +2,21 @@
 
 namespace rpg\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use rpg\Http\Requests;
+use Request;
 use Mail;
 
 
 class MailController extends Controller
 {
-	public function confirmacao() {
+	public function mail() {
 
-		$data = [
-			'user' => 'Usuário',
-			'email' => 'felipelopesrita@gmail.com'
-		];
-		
-		Mail::send('welcome', $data, function ($message) {
-	    $message->from('felipelopesrita@gmail.com', 'Felipe J. L. Rita');
-		  $message->to('felipelopesrita@hotmail.com');
+		$data = [];
+		Mail::send('mails.auth.sigup', $data, function ($message) {
+	    $message->from('felipe@rpgi.herokuapp.com', 'RPGi');
+		  $message->to( Request::input('email') );
 		});
 
-		return view('welcome');
-
+		//return view('mails.auth.sigup');
 	}
 }

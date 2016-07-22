@@ -10,12 +10,20 @@ use Auth;
 class UserController extends Controller
 {
   public function sigin() {
+    
     $credentials = array(
       'email' => Request::input('email'),
       'password' => Request::input('password'),
     );
-    if( Auth::validate($credentials) && Auth::attempt($credentials) )
-      return [ 'auth' => true ];
+    //Verifica se a senha informada coincide
+    if( Auth::validate($credentials) ) {
+      //Verifica se a conta já foi confirmada via email
+      $user = User::where('email', $credentials['email'])->get()[0];
+      if( $user->verified && Auth::attempt($credentials) )
+        return [ 'auth' => true ];
+      else
+        return [ 'auth' => false, 'message' => 'Você ainda não confirmou sua conta. Acesse seu email e confirme através do link disponibilizado' ];
+    }
     return [ 'auth' => false ];
   }
   
@@ -33,6 +41,7 @@ class UserController extends Controller
        'name'     => $data['name'],
        'email'    => $data['email'],
        'password' => bcrypt($data['password']),
+       'verified' => false,
      ]);
   }
 

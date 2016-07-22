@@ -2,16 +2,19 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:46:55
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-18 19:54:35
+ * @Last Modified time: 2016-07-22 11:40:41
  */
 
 angular.module('rpg').controller('UserController', UserController);
 
-function UserController( $resource, $window, $location, CSRF_TOKEN, FUNCTIONS ) {
+function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN, FUNCTIONS ) {
   var vm   = this;
   var func = FUNCTIONS($location);
   vm.login = 1;
+  vm.send  = 0;
   vm.token = CSRF_TOKEN;
+
+  vm.email  = $routeParams.mail; 
 
   var login = $resource('/login');
   var res   = login.get().$promise;
@@ -23,26 +26,52 @@ function UserController( $resource, $window, $location, CSRF_TOKEN, FUNCTIONS ) 
   if( $(window).width() < $(window).height() )
     vm.position = 'vertical';
 
+  vm.mail  = function(mail, callback) {
+    vm.wait     = true; 
+    var data    = { email: mail, _token: CSRF_TOKEN };
+    var Mail    = $resource('/api/mail');
+    var promise = Mail.save(data).$promise;
+    promise
+      .then(function(){
+        vm.send++;
+        vm.wait = false;
+        if( callback!==undefined )
+          callback();
+      });
+    return false;
+  }
+
   vm.sigin = function() {
     var data = this.formData;
     var User = $resource('/login');
     var promise = User.save(data).$promise;
-    promise.then( function(json) {
-              if( json.auth ) func.redirect('/dashboard');
-              else vm.erro = true;
-            } )
-            .catch(func.erro);
+    promise
+      .then( function(json) {
+        if( json.auth ) func.redirect('/dashboard');
+        else if( json.message )
+        {
+          vm.message = json.message;
+          vm.erro    = true;
+        }
+        else vm.erro = true;
+      } )
+      .catch(func.erro);
   };
 
   vm.sigup = function() {
+    vm.wait  = true;
     var data = this.formData;
     var User = $resource('/sigup');
     var promise = User.save(data).$promise;
     promise
-      .then(func.redirect('/sigin'))
+      .then(function(){
+        vm.mail(data.email, function() {
+          func.redirect('/confirmation/'+data.email);
+        });
+      })
       .catch(func.erro);
   };
 };
 
-UserController['$inject'] = [ '$resource', '$window', '$location', 'CSRF_TOKEN', 'FUNCTIONS' ];
+UserController['$inject'] = [ '$routeParams', '$resource', '$window', '$location', 'CSRF_TOKEN', 'FUNCTIONS' ];
 
