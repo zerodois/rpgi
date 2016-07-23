@@ -25,6 +25,7 @@
   <script type="text/javascript" src="/vendor/angular-animate/angular-animate.min.js"></script>
   <!-- <script type="text/javascript" src="/vendor/angular-flash-alert/dist/angular-flash.min.js"></script> -->
   <script type="text/javascript" src="/js/angular-fullscreen.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <script type="text/javascript" src="/js/controllers/RpgController.js"></script>
   <script type="text/javascript" src="/js/controllers/UserController.js"></script>

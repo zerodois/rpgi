@@ -62,7 +62,7 @@
                       <td>
                         <table style="background-color: #1BBC9B; border-radius: 4px;">
                           <tr>
-                            <td><a href="{{ url('/') }}/#/sigin/{!! $email !!}" style="color: white; text-decoration: none; display: block; padding: 20px 30px;">Confirmar cadastro</a></td>
+                            <td><a href="{{ url('/') }}/#/sigin/{!! $id !!}" style="color: white; text-decoration: none; display: block; padding: 20px 30px;">Confirmar cadastro</a></td>
                           </tr>
                         </table>
                       </td>

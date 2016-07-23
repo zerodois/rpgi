@@ -32,24 +32,24 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input type="text" name="email" ng-model="User.formData.email" id="email" class="form-control" required>
-                  <label for="email">Email</label>
+                  <input type="email" name="email" ng-model="User.formData.email" id="email" class="validate" required>
+                  <label for="email" class="left-align" data-error="Email inválido">Email</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input type="password" id="password" name="password" ng-model="User.formData.password" class="form-control" required>
-                  <label for="password">Senha</label>
+                  <input type="password" id="password" minlength="6" ng-minlenght="6" name="password" ng-model="User.formData.password" class="validate" required>
+                  <label for="password" class="left-align" data-error="A senha deve conter no mínimo 6 caracteres">Senha</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input type="password" id="passwordConfirm" name="passwordConfirm" ng-model="passwordConfirm"class="form-control" required>
-                  <label for="passwordConfirm">Confirmação da senha</label>
+                  <input type="password" id="passwordConfirm" name="passwordConfirm" ng-model="passwordConfirm"class="validate" pw-check="password" required>
+                  <label for="passwordConfirm" class="left-align" data-error="As senhas informadas não coincidem">Confirmação da senha</label>
                 </div>
               </div>
               <div class="input-field">
-                <button type="submit" class="btn full-width btn-large" name="button" ng-disabled="!formLogin.$valid" ng-class="formLogin.$valid ? '':'disabled'" >Criar conta</button>
+                <button type="submit" class="btn full-width btn-large" name="button" ng-disabled="!formLogin.$valid" ng-class="{'disabled' : !formLogin.$valid}" >Criar conta</button>
               </div>
             </div>
           </div>
@@ -63,3 +63,21 @@
 
   </div>
 </div>
+
+<script type="text/javascript">
+/*
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("passwordConfirm");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+*/
+</script>
