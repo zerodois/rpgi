@@ -6,6 +6,15 @@
     <div class="row">
       <div class="col col s12 m8 l6 offset-m2 offset-l3 index center-align">
         <form name="formLogin" ng-submit="User.sigup()" novalidate>
+          <div class="row" ng-show="User.message">
+            <div class="input-field col s12">
+              <div class="card-panel red">
+                <div class="card-content white-text">
+                  @{User.message}
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="wait" ng-show="User.wait">
             <div class="preloader-wrapper small active">
               <div class="spinner-layer spinner-green-only">

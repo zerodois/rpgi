@@ -2,7 +2,7 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:16:26
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-23 13:57:49
+ * @Last Modified time: 2016-07-25 00:47:31
  */
 
 angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
@@ -23,6 +23,24 @@ angular.module('rpg', ['ngRoute', 'ngResource', 'FBAngular', 'ngAnimate'])
 	})
 
 	.directive('pwCheck', [function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, elem, attrs, ctrl) {
+        var firstPassword = '#' + attrs.pwCheck;
+        var check         = document.getElementById(elem.context.id);
+        elem.add(firstPassword).on('keyup', function () {
+          scope.$apply(function () {
+            var v = elem.val()===$(firstPassword).val();
+            if( v ) check.setCustomValidity('');
+            else check.setCustomValidity("Passwords Don't Match");
+            ctrl.$setValidity('pwmatch', v);
+          });
+        });
+      }
+    }
+  }])
+
+  .directive('pwCheck', [function () {
     return {
       require: 'ngModel',
       link: function (scope, elem, attrs, ctrl) {

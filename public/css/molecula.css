@@ -56,3 +56,6 @@
 #files .collection .collection-item {
 	overflow: hidden;	
 }
+.bottom-buffer {
+	margin-bottom: 20px;
+}

@@ -54,7 +54,7 @@ img.background.full, img.background-md.full, img.background-sm.full {
   position: fixed;
   height: 300px;
   width: 300px;
-  border-radius: 50%;
+  border-radius: 50% !important;
   text-align: center;
   //line-height: 270px;
   top: 50%;
@@ -103,4 +103,9 @@ img.background.full, img.background-md.full, img.background-sm.full {
 }
 .wait .preloader-wrapper {
   margin: auto;
+}
+
+ul.collection {
+  margin: 0;
+  width: 100%;
 }

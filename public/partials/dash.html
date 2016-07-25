@@ -1,40 +1,55 @@
 <div class="navbar-fixed">
 	<nav class="teal">
 		<div class="nav-wrapper container">
-		  <a href="/#/" class="brand-logo left"><i class="icon-logo logo"></i></a>
-		  <ul class="right hide-on-med-and-down">
-				<li>
-					<a href="/#/dashboard" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Home">
-						<i class="material-icons">home</i>
-					</a>
-				</li>
-				<li><a ng-click="Dash.toggleScreen()"><i class="material-icons">@{Dash.icon}</i></a></li>
-				<li>
-					<a ng-click="Dash.logout()" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Logout">
-						<i class="material-icons">exit_to_app</i>
-					</a>
-				</li>
-		  </ul>
-		  <a href="#" data-activates="mobile-demo" class="button-collapse right">
-		  	<i class="material-icons">menu</i>
-		  </a>
-		  <ul class="side-nav" id="mobile-demo">
-				<li>
-					<a href="/#/" class="waves-effect">
-						<i class="icon-logo logo"></i><h4 class="side-block">RPGi</h4>
-					</a>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<a href="/#/dashboard" class="waves-effect waves-teal">
-						<i class="material-icons">home</i> <span>Página inicial</span>
-					</a>
-				</li>
-				<li>
-					<a ng-click="Dash.logout()" class="waves-effect waves-teal">
-						<i class="material-icons">exit_to_app</i><span>Sair</span></a>
-				</li>
-		  </ul>
+		  <div class="row">
+		  	<div class="col l2 m2 s3">
+				  <a href="/#/"><i class="icon-logo logo"></i></a>
+		  	</div>
+		  	<div class="col l7 m9 s7">
+			  	<form class="form">
+			      <div class="input-field">
+			        <input id="search" type="search" ng-model="Dash.itens_filter" required>
+			        <label for="search"><i class="material-icons">search</i></label>
+			        <i class="material-icons">close</i>
+			      </div>
+			    </form>
+		  	</div>
+		  	<div class="col l3 m1 s2">
+				  <ul class="right hide-on-med-and-down">
+						<li>
+							<a href="/#/dashboard" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Home">
+								<i class="material-icons">home</i>
+							</a>
+						</li>
+						<li><a ng-click="Dash.toggleScreen()"><i class="material-icons">@{Dash.icon}</i></a></li>
+						<li>
+							<a ng-click="Dash.logout()" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Logout">
+								<i class="material-icons">exit_to_app</i>
+							</a>
+						</li>
+				  </ul>
+				  <a href="#" data-activates="mobile-demo" class="button-collapse right">
+				  	<i class="material-icons">menu</i>
+				  </a>
+				  <ul class="side-nav" id="mobile-demo">
+						<li>
+							<a href="/#/" class="waves-effect">
+								<i class="icon-logo logo"></i><h4 class="side-block">RPGi</h4>
+							</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="/#/dashboard" class="waves-effect waves-teal">
+								<i class="material-icons">home</i> <span>Página inicial</span>
+							</a>
+						</li>
+						<li>
+							<a ng-click="Dash.logout()" class="waves-effect waves-teal">
+								<i class="material-icons">exit_to_app</i><span>Sair</span></a>
+						</li>
+				  </ul>
+		  	</div>
+		  </div>
 		</div>
   </nav>
 </div>
@@ -48,7 +63,7 @@
     <li><a class="btn-floating blue" ng-click="Dash.toogleObject(Dash.display)"><i class="material-icons">description</i></a></li>
   </ul>
 </div>
-<div class="container relative" ng-controller="FileController as File">
+<div class="container relative" ng-if="Dash.logged" ng-controller="FileController as File">
 	<div class="row top-buffer">
 		<div ng-include="'/partials/components/file_board.htm'"></div>
 		<div ng-include="'/partials/components/add_file.htm'"></div>

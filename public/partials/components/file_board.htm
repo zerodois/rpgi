@@ -1,9 +1,14 @@
 <div class="container">
 	<div class="card-panel pt0 hovicon" id="files">
-		<span>Meus arquivos pessoais</span>
+		<div class="bottom-buffer">
+			Meus arquivos pessoais 
+			<div class="right">
+				<i class="material-icons link" ng-click="Dash.toogleMode()">view_@{Dash.mode}</i>
+			</div>
+		</div>
 		<div class="row">
-			<ul class="collection hide-on-med-and-up">
-				<li class="collection-item center-align" ng-repeat="file in File.files">
+			<ul class="collection" ng-show="Dash.mode!='list'">
+				<li class="collection-item center-align" ng-repeat="file in File.files | filter: Dash.itens_filter">
 					<div>
 						@{file.name}
 						<div class="actions">
@@ -14,11 +19,13 @@
 					</div>
 				</li>
 			</ul>
-			<div class="col s4" ng-repeat="file in File.files">
-				<div class="card hide-on-small-only">
+			<div class="col s4" ng-repeat="file in File.files | filter: Dash.itens_filter">
+				<div class="card" ng-show="Dash.mode!='module'">
 			    <div class="card-image mini waves-effect waves-block waves-light">
-			      <img class="activator" ng-show="file.type=='image'" alt="" 
-			      	ng-src="@{file.path}@{file._id}_icon.jpg">
+			      <div ng-if="file.type=='image'">
+				      <img class="activator" alt="" 
+				      	ng-src="@{file.path}@{file._id}_icon.jpg">			      	
+			      </div>
 			      <span ng-show="file.type=='document'" class="miniatura">
 			      	<i class="fa fa-file fa-3x" aria-hidden="true"></i>
 			      </span>

@@ -51,7 +51,11 @@ class UserController extends Controller
   }
 
   public function sigup() {
-     $data = Request::all();
+     $data  = Request::all();
+     $email = Request::input('email');
+     if( count( User::where( 'email', $email )->get() )>0 )
+      return [ 'erro' => true, 'message' => 'O email informado já existe no sistema' ];
+
      return User::create([
        'name'     => $data['name'],
        'email'    => $data['email'],

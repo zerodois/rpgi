@@ -111,7 +111,7 @@ class FileController extends Controller
     $img = Image::make($path);
     $dest = str_replace( ".{$extension}", "_icon.jpg", $dest );
     $img->encode('jpg')
-        ->resize(null, 300, function ($constraint) {
+        ->resize(null, 200, function ($constraint) {
             $constraint->aspectRatio();
           })
         ->save($dest);

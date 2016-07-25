@@ -2,7 +2,7 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:46:55
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-22 15:58:00
+ * @Last Modified time: 2016-07-25 00:53:38
  */
 
 angular.module('rpg').controller('UserController', UserController);
@@ -79,7 +79,13 @@ function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN
     var User = $resource('/sigup');
     var promise = User.save(data).$promise;
     promise
-      .then(function(){
+      .then(function(json){
+        vm.message   = '';
+        if ( json.erro ){
+          vm.message = json.message;
+          vm.wait    = false; 
+          return false;
+        }
         vm.mail(data.email, function() {
           func.redirect('/confirmation/'+data.email);
         });
