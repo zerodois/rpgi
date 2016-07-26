@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>RPGi</title>
-    <link rel="stylesheet" type="text/css" href="/glyphter/css/rpg.css">
+    <link rel="stylesheet" type="text/css" href="/icomoon/css/rpg.css">
     <link rel="stylesheet" type="text/css" href="/vendor/Materialize/dist/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/vendor/dropzone/dist/min/dropzone.min.css">
@@ -23,12 +23,15 @@
   <script type="text/javascript" src="/vendor/angular-resource/angular-resource.min.js"></script>
   <script type="text/javascript" src="/vendor/angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="/vendor/angular-animate/angular-animate.min.js"></script>
-  <!-- <script type="text/javascript" src="/vendor/angular-flash-alert/dist/angular-flash.min.js"></script> -->
   <script type="text/javascript" src="/js/angular-fullscreen.js"></script>
   <script type="text/javascript" src="/js/main.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
+  <script type="text/javascript" src="/js/route-config.js"></script>
   <script type="text/javascript" src="/js/controllers/RpgController.js"></script>
   <script type="text/javascript" src="/js/controllers/UserController.js"></script>
   <script type="text/javascript" src="/js/controllers/DashController.js"></script>
   <script type="text/javascript" src="/js/controllers/FileController.js"></script>
+  <script type="text/javascript" src="/js/controllers/CampaignController.js"></script>
+  <script type="text/javascript" src="/js/controllers/DicesController.js"></script>
+
 </html>

@@ -1,0 +1,64 @@
+<img src="/images/wallpaper.jpg" alt="Imagem de fundo" class="position-@{User.position} background hide-on-med-and-down" />
+<img src="/images/wallpaper.jpg" alt="Imagem de fundo" class="position-@{User.position} background-md hide-on-small-only hide-on-large-only" />
+<img src="/images/wallpaper.jpg" alt="Imagem de fundo" class="position-@{User.position} background-sm hide-on-med-and-up" />
+<div class="corpo">
+  <section class="container center-block">
+    <div class="row">
+      <div class="col s12 m8 l6 offset-m2 offset-l3 center-align index">
+        <form name="formLogin" ng-submit="User.reset()" novalidate>
+          <input type="hidden" ng-model="User.formData._token" name="_token" value="@{User.token}">
+          <div class="wait" ng-show="User.wait">
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <h1 class="title text-center"><i class="icon-logo"></i> RPGi</h1>
+          </div>
+          <div class="row">
+            <div class="col s10 offset-s1">
+              <div class="row" ng-show="User.erro">
+                <div class="input-field col s12">
+                  <div class="card-panel red">
+                    <div ng-show="User.message" class="card-content white-text">
+                      @{User.message}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" ng-show="User.sucesso">
+                <div class="input-field col s12">
+                  <div class="card-panel green">
+                    <div class="card-content white-text">
+                      @{User.message}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="email" name="email" id="email" ng-model="User.formData.email" class="validate" required>
+                  <label for="email" class="left-align" data-error="Email inválido">Email</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-large waves-effect full-width" ng-class="formLogin.$valid ? '' : 'disabled'" name="button" ng-disabled="!formLogin.$valid">Redefinir a senha</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group top-buffer">
+            <a href="/#/sigin">Voltar</a> | <a href="/#/sigup">Criar conta</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

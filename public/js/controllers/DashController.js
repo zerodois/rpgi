@@ -2,10 +2,12 @@
 * @Author: felipe
 * @Date:   2016-07-18 02:38:50
 * @Last Modified by:   felipelopesrita
-* @Last Modified time: 2016-07-25 01:55:34
+* @Last Modified time: 2016-07-25 19:33:48
 */
 
-angular.module('rpg').controller('DashController', DashController);
+angular.module('rpg')
+	.controller('DashController', DashController)
+
 function DashController( $location, $resource, Fullscreen, FUNCTIONS ) {
 
 	var vm   	 = this;

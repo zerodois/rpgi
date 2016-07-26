@@ -50,6 +50,18 @@ class UserController extends Controller
     return [ 'confirmed' => true ];
   }
 
+  public function reset() {
+    $tmp = User::where( 'hash', Request::input('hash') )->get();
+    if( count($tmp)<1 )
+      return [ 'success' => false, 'message' => 'Este link para redefinição já foi utilizado ou é inexistente' ];
+    
+    $user = $tmp->first();
+    $user->hash = null;
+    $user->password = bcrypt( Request::input('password') );    
+    $user->save();
+    return ['success' => true, 'message' => 'Redefinição de senha realizada. Prossiga para o menu de login para utilizar o sistema' ];
+  }
+
   public function sigup() {
      $data  = Request::all();
      $email = Request::input('email');

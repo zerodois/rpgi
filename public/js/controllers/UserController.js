@@ -2,12 +2,14 @@
  * @Author: felipe
  * @Date:   2016-07-11 14:46:55
  * @Last Modified by:   felipelopesrita
- * @Last Modified time: 2016-07-25 00:53:38
+ * @Last Modified time: 2016-07-25 20:14:03
  */
 
-angular.module('rpg').controller('UserController', UserController);
+angular.module('rpg')
+  .controller('UserController', UserController)
 
 function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN, FUNCTIONS ) {
+  
   var vm   = this;
   var func = FUNCTIONS($location);
   vm.login = 1;
@@ -15,6 +17,7 @@ function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN
   vm.token = CSRF_TOKEN;
 
   vm.email  = $routeParams.mail; 
+  vm.hash   = $routeParams.hash;
 
   vm.confirm = function( id ) {
     var uri = '/confirm/:idObj';
@@ -56,6 +59,42 @@ function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN
     return false;
   }
 
+  vm.reset = function() {
+    vm.wait   = true;
+    var data  = vm.formData;
+    var Reset = $resource('/mail/reset');
+    promise   = Reset.save(data).$promise;
+    promise
+      .then(function(json){
+        vm.message = json.message;
+        vm.wait    = false;
+        if( json.mail )
+          vm.sucesso = true; 
+        else
+          vm.erro    = true;
+      })
+      .catch(func.erro);
+  }
+
+  vm.restart = function() {
+    vm.wait   = true;
+    vm.formData.hash = vm.hash;
+    var data  = vm.formData;
+    var Reset = $resource('/auth/reset');
+    console.log(data);
+    promise   = Reset.save(data).$promise;
+    promise
+      .then(function(json){
+        vm.message = json.message;
+        vm.wait    = false;
+        if( json.success )
+          vm.sucesso = true; 
+        else
+          vm.erro    = true;
+      })
+      .catch(func.erro);
+  }
+
   vm.sigin = function() {
     var data = this.formData;
     var User = $resource('/login');
@@ -76,7 +115,7 @@ function UserController( $routeParams, $resource, $window, $location, CSRF_TOKEN
   vm.sigup = function() {
     vm.wait  = true;
     var data = this.formData;
-    var User = $resource('/sigup');
+    var User = $resource('/auth/sigup');
     var promise = User.save(data).$promise;
     promise
       .then(function(json){

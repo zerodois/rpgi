@@ -3,7 +3,7 @@
 		<div class="nav-wrapper container">
 		  <div class="row">
 		  	<div class="col l2 m2 s3">
-				  <a href="/#/"><i class="icon-logo logo"></i></a>
+				  <a href="/#/dashboard"><i class="icon-logo logo"></i></a>
 		  	</div>
 		  	<div class="col l7 m9 s7">
 			  	<form class="form">
@@ -17,8 +17,8 @@
 		  	<div class="col l3 m1 s2">
 				  <ul class="right hide-on-med-and-down">
 						<li>
-							<a href="/#/dashboard" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Home">
-								<i class="material-icons">home</i>
+							<a href="/#/campaign" class="tooltipped" data-position="bottom" data-delay="25" data-tooltip="Campanhas">
+								<i class="material-icons">people</i>
 							</a>
 						</li>
 						<li><a ng-click="Dash.toggleScreen()"><i class="material-icons">@{Dash.icon}</i></a></li>
@@ -72,4 +72,5 @@
 
 <script type="text/javascript">
 	$('.button-collapse').sideNav();
+	$('.tooltipped').tooltip({delay: 50});
 </script>

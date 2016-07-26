@@ -16,10 +16,11 @@ Route::get('/', function () {
 });
 
 Route::post('/login', 'UserController@sigin');
-Route::post('/sigup', 'UserController@sigup');
+Route::post('/auth/sigup', 'UserController@sigup');
 Route::get('/login',  'UserController@login');
 Route::get('/logout', 'UserController@logout');
 Route::get('/confirm/{id}', 'UserController@confirma');
+Route::post('/auth/reset', 'UserController@reset');
 
 Route::get('/api/file/{filename}', 'FileController@retrieveFile');
 Route::get('/file/{id}', 'FileController@view');
@@ -29,7 +30,9 @@ Route::delete('/file/{id}', 'FileController@delete');
 Route::post('/api/upload', 'FileController@upload');
 Route::get('/api/file', 'FileController@lista');
 
+Route::get('/mail', 'MailController@email');
 Route::post('/api/mail', 'MailController@mail');
+Route::post('/mail/reset', 'MailController@mailReset');
 /*
 Route::get('/mail', function(){
 	dd(Config::get('mail'));
