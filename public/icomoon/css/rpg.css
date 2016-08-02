@@ -24,6 +24,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.icon-d4:before {
+  content: "\e907";
+}
+.icon-d2:before {
+  content: "\e904";
+}
+.icon-d6:before {
+  content: "\e905";
+}
+.icon-d8:before {
+  content: "\e906";
+}
+.icon-d10:before {
+  content: "\e903";
+}
+.icon-d12:before {
+  content: "\e902";
+}
 .icon-d20:before {
   content: "\e900";
 }

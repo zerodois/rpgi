@@ -100,7 +100,7 @@ class FileController extends Controller
   public function delete($id) {
     $file = File::find( $id );
     if( count($file)<=0 )
-      return false;
+      return [ 'err' => $id ];
     File::destroy($id);
     Storage::delete($file->path.'/'.$id.'.'.$file->extension);
     if( $file->extension=='image' )
